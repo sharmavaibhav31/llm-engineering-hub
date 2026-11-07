@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         description="Groq Cloud API Key (starts with gsk_)",
     )
     default_model: str = Field(
-        default="llama-3.3-70b-versatile",
+        default="openai/gpt-oss-20b",
         description="Default LLM model identifier for Groq API",
     )
     request_timeout_seconds: float = Field(
