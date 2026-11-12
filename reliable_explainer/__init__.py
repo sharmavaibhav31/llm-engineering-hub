@@ -1,5 +1,6 @@
 """Reliable Explainer: Production-grade streaming and resilient LLM client."""
 
+from reliable_explainer.batch import BatchItemResult, Result, run_batch
 from reliable_explainer.config import ExplainerConfig, load_config
 from reliable_explainer.explainer import StreamResult, explain_stream
 from reliable_explainer.retry import (
@@ -18,4 +19,7 @@ __all__ = [
     "RetryResult",
     "is_retryable_error",
     "calculate_delay",
+    "run_batch",
+    "BatchItemResult",
+    "Result",
 ]
