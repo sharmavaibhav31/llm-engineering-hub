@@ -55,3 +55,4 @@ async def test_cli_batch_questions_flow():
             code = await async_main(args)
             assert code == 0
             mock_handle_batch.assert_called_once()
+

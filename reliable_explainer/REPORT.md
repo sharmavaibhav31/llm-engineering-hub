@@ -212,3 +212,4 @@ PYTHONPATH=. python reliable_explainer/benchmark.py
 
 - **Built a Python CLI for LLM Q&A with streaming output, bounded retries (exponential backoff with jitter, retryable-error classification) and asyncio batching with a concurrency cap; a batch of 5 questions ran in 1.80s versus 3.97s sequentially (2.2x speedup).**
 - **Instrumented every request with attempts, status and token usage; tested 8 failure modes (missing key, empty input, retries exhausted, missing usage data, 401 fast-fail, transient recovery, partial batch isolation, concurrency saturation) using injected faults.**
+
