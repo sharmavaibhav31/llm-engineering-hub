@@ -53,7 +53,9 @@ def format_summary_table(results: List[Result], use_color: bool = True) -> str:
     if not results:
         return "\n--- SUMMARY TABLE: No results recorded ---\n"
 
-    console = Console(record=True, color_system="auto" if use_color else None, width=100)
+    import io
+    string_io = io.StringIO()
+    console = Console(file=string_io, color_system="auto" if use_color else None, width=100)
     table = Table(
         title="Execution Summary Table",
         show_header=True,
@@ -95,5 +97,5 @@ def format_summary_table(results: List[Result], use_color: bool = True) -> str:
         )
 
     console.print(table)
-    return console.export_text()
+    return string_io.getvalue()
 
