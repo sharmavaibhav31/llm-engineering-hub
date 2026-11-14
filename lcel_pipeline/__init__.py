@@ -8,6 +8,11 @@ from lcel_pipeline.config import (
     load_settings,
     validate_chunk_settings,
 )
+from lcel_pipeline.explain import (
+    build_explain_chain,
+    build_explain_prompt,
+    run_explain,
+)
 
 __all__ = [
     "DEFAULT_MODEL",
@@ -16,5 +21,7 @@ __all__ = [
     "PipelineSettings",
     "load_settings",
     "validate_chunk_settings",
+    "build_explain_chain",
+    "build_explain_prompt",
+    "run_explain",
 ]
-

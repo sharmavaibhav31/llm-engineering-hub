@@ -74,11 +74,11 @@ def test_valid_execution_skeleton(monkeypatch, capsys):
     """Skeleton executes successfully when settings and arguments are valid."""
     monkeypatch.setenv("GROQ_API_KEY", "gsk_test_key_dummy_12345")
     with patch("lcel_pipeline.config.load_dotenv"):
-        code_explain = main(["explain", "Concurrency"])
+        code_explain = main(["explain", "Concurrency", "--show-prompt"])
         assert code_explain == 0
         captured = capsys.readouterr()
-        assert "[EXPLAIN MODE SKELETON]" in captured.out
-        assert "Topic: Concurrency" in captured.out
+        assert "=== FORMATTED PROMPT (No API Call) ===" in captured.out
+        assert "Topic:           Concurrency" in captured.out
 
         code_doc = main(["document", "notes.txt", "--chunk-size", "500", "--chunk-overlap", "50"])
         assert code_doc == 0

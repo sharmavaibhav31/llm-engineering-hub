@@ -117,15 +117,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
 
     if args.subcommand == "explain":
-        sys.stdout.write(
-            f"[EXPLAIN MODE SKELETON]\n"
-            f"Topic: {args.topic}\n"
-            f"Audience: {args.audience}\n"
-            f"Format: {args.format}\n"
-            f"Model: {settings.model}\n"
-            f"Show Prompt: {args.show_prompt}\n"
-        )
-        return 0
+        from lcel_pipeline.explain import run_explain
+        try:
+            output = run_explain(
+                topic=args.topic,
+                audience=args.audience,
+                format_spec=args.format,
+                settings=settings,
+                show_prompt=args.show_prompt,
+            )
+            sys.stdout.write(f"\n{output}\n")
+            sys.stdout.flush()
+            return 0
+        except ValueError as err:
+            sys.stderr.write(f"Error: {err}\n")
+            return 1
 
     elif args.subcommand == "document":
         sys.stdout.write(
