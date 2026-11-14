@@ -8,6 +8,12 @@ from lcel_pipeline.config import (
     load_settings,
     validate_chunk_settings,
 )
+from lcel_pipeline.document import (
+    SplitSummary,
+    format_document_output,
+    load_and_split_document,
+    run_document_mode,
+)
 from lcel_pipeline.explain import (
     build_explain_chain,
     build_explain_prompt,
@@ -24,4 +30,8 @@ __all__ = [
     "build_explain_chain",
     "build_explain_prompt",
     "run_explain",
+    "SplitSummary",
+    "load_and_split_document",
+    "run_document_mode",
+    "format_document_output",
 ]

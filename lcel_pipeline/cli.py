@@ -134,14 +134,19 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return 1
 
     elif args.subcommand == "document":
-        sys.stdout.write(
-            f"[DOCUMENT MODE SKELETON]\n"
-            f"File: {args.file_path}\n"
-            f"Chunk Size: {settings.chunk_size}\n"
-            f"Chunk Overlap: {settings.chunk_overlap}\n"
-            f"Preview Chunks: {args.num_chunks}\n"
-        )
-        return 0
+        from lcel_pipeline.document import run_document_mode
+        try:
+            output = run_document_mode(
+                file_path=args.file_path,
+                settings=settings,
+                num_chunks=args.num_chunks,
+            )
+            sys.stdout.write(f"{output}\n")
+            sys.stdout.flush()
+            return 0
+        except (FileNotFoundError, ValueError) as err:
+            sys.stderr.write(f"Error: {err}\n")
+            return 1
 
     return 0
 

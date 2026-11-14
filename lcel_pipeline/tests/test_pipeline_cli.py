@@ -80,9 +80,8 @@ def test_valid_execution_skeleton(monkeypatch, capsys):
         assert "=== FORMATTED PROMPT (No API Call) ===" in captured.out
         assert "Topic:           Concurrency" in captured.out
 
-        code_doc = main(["document", "notes.txt", "--chunk-size", "500", "--chunk-overlap", "50"])
+        code_doc = main(["document", "README.md", "--chunk-size", "500", "--chunk-overlap", "50"])
         assert code_doc == 0
         captured_doc = capsys.readouterr()
-        assert "[DOCUMENT MODE SKELETON]" in captured_doc.out
-        assert "Chunk Size: 500" in captured_doc.out
-        assert "Chunk Overlap: 50" in captured_doc.out
+        assert "DOCUMENT INGESTION & CHUNKING REPORT" in captured_doc.out
+        assert "Chunk Size / Lap:  500 / 50" in captured_doc.out
