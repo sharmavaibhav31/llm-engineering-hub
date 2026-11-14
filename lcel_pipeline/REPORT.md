@@ -229,3 +229,4 @@ pytest
 
 - **Built a multi-mode CLI on LangChain (LCEL) composing ChatPromptTemplate, ChatGroq and StrOutputParser, parameterized by topic, audience and format with zero-API prompt inspection.**
 - **Implemented document ingestion with TextLoader and RecursiveCharacterTextSplitter and compared 2 chunk-size and overlap settings (400/50 yielding 37 chunks vs 1200/200 yielding 14 chunks) on boundary quality, identifying 3 severed technical concepts.**
+
