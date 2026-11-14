@@ -118,6 +118,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.subcommand == "explain":
         from lcel_pipeline.explain import run_explain
+        from lcel_pipeline.errors import handle_cli_error
         try:
             output = run_explain(
                 topic=args.topic,
@@ -132,6 +133,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         except ValueError as err:
             sys.stderr.write(f"Error: {err}\n")
             return 1
+        except Exception as exc:
+            return handle_cli_error(exc)
 
     elif args.subcommand == "document":
         from lcel_pipeline.document import run_document_mode
